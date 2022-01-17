@@ -1,0 +1,10 @@
+pandas
+unidecode
+seaborn
+matplotlib
+numpy
+statsmodels
+sklearn
+squarify
+datashader
+geoviews
