@@ -1,9 +1,9 @@
 # Squad Pandas 
  
- * Giuliano Ferreira
  * Anderson Monteiro
- * Marcella Oliveira
+ * Giuliano Ferreira
  * Luís Carlos Almeida
+ * Marcella Oliveira
 
 <p align="center">
 <img src="https://img.shields.io/static/v1?label=Status&message=Em Andamento&color=green&style=for-the-badge"/>
