@@ -1,5 +1,4 @@
 # Squad Pandas 
-
  *Giuliano Ferreira
  *Anderson Monteiro
  *Marcella Oliveira
