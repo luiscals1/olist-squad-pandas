@@ -15,7 +15,7 @@
  </div>
 </p>
 
-# Nesto projeto vamos utilizar os dados da empresa Olist para desenvolvimento do trabalho. Os dados são de uma empresa real, que trabalha no ramo de varejo com market places. Os dados podem ser obtidos aqui no projeto.
+### Neste projeto vamos utilizar os dados da empresa Olist para desenvolvimento do trabalho. Os dados são de uma empresa real, que trabalha no ramo de varejo com market places. Os dados podem ser obtidos aqui no projeto.
  
 
 
