@@ -11,7 +11,7 @@
 
 <p align="center">
  <div class="container">
-    <img src="https://github.com/luiscals1/olist-squad-pandas/blob/main/images/stack-labs.jpeg" width="720" height="705"/>
+    <img src="https://github.com/luiscals1/olist-squad-pandas/blob/main/images/stack-labs.jpeg" width="680" height="720"/>
  </div>
 </p>
 
