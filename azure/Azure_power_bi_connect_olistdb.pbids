@@ -1,0 +1,1 @@
+{"version":"1.0","connections":[{"details":{"protocol":"tds","address":{"server":"olistdbserver.database.windows.net","database":"olistdb"}},"mode":"DirectQuery"}]}

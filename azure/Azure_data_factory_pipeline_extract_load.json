@@ -1,0 +1,182 @@
+{
+    "name": "olistCopyPipeline",
+    "properties": {
+        "activities": [
+            {
+                "name": "ForEach_SQL_To_CSV",
+                "type": "ForEach",
+                "dependsOn": [],
+                "userProperties": [],
+                "typeProperties": {
+                    "items": {
+                        "value": "@pipeline().parameters.cw_items",
+                        "type": "Expression"
+                    },
+                    "activities": [
+                        {
+                            "name": "Copy_to_CSVs",
+                            "type": "Copy",
+                            "dependsOn": [],
+                            "policy": {
+                                "timeout": "7.00:00:00",
+                                "retry": 0,
+                                "retryIntervalInSeconds": 30,
+                                "secureOutput": false,
+                                "secureInput": false
+                            },
+                            "userProperties": [
+                                {
+                                    "name": "Source",
+                                    "value": "dbo.@{item().source.table}"
+                                },
+                                {
+                                    "name": "Destination",
+                                    "value": "landing//@{item().destination.fileName}"
+                                }
+                            ],
+                            "typeProperties": {
+                                "source": {
+                                    "type": "AzureSqlSource",
+                                    "partitionOption": "None"
+                                },
+                                "sink": {
+                                    "type": "DelimitedTextSink",
+                                    "storeSettings": {
+                                        "type": "AzureBlobFSWriteSettings",
+                                        "maxConcurrentConnections": 0
+                                    },
+                                    "formatSettings": {
+                                        "type": "DelimitedTextWriteSettings",
+                                        "quoteAllText": true,
+                                        "fileExtension": ".txt"
+                                    }
+                                },
+                                "enableStaging": false,
+                                "validateDataConsistency": false
+                            },
+                            "inputs": [
+                                {
+                                    "referenceName": "olistSourceDataset",
+                                    "type": "DatasetReference",
+                                    "parameters": {
+                                        "cw_table": "@item().source.table"
+                                    }
+                                }
+                            ],
+                            "outputs": [
+                                {
+                                    "referenceName": "olistDestinationDataset",
+                                    "type": "DatasetReference",
+                                    "parameters": {
+                                        "cw_fileName": "@item().destination.fileName"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Mount_Transform_Persist_Data_Lakes",
+                "type": "DatabricksNotebook",
+                "dependsOn": [
+                    {
+                        "activity": "ForEach_SQL_To_CSV",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "notebookPath": "/Users/giuferreira@hotmail.com/olist_mount_transform_persist_data_lakes"
+                },
+                "linkedServiceName": {
+                    "referenceName": "AzureDatabricksRESTAPI",
+                    "type": "LinkedServiceReference"
+                }
+            }
+        ],
+        "parameters": {
+            "cw_items": {
+                "type": "Array",
+                "defaultValue": [
+                    {
+                        "source": {
+                            "table": "olist_customers_dataset"
+                        },
+                        "destination": {
+                            "fileName": "olist_customers_dataset.csv"
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "olist_geolocation_dataset"
+                        },
+                        "destination": {
+                            "fileName": "olist_geolocation_dataset.csv"
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "olist_order_items_dataset"
+                        },
+                        "destination": {
+                            "fileName": "olist_order_items_dataset.csv"
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "olist_order_payments_dataset"
+                        },
+                        "destination": {
+                            "fileName": "olist_order_payments_dataset.csv"
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "olist_order_reviews_dataset"
+                        },
+                        "destination": {
+                            "fileName": "olist_order_reviews_dataset.csv"
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "olist_orders_dataset"
+                        },
+                        "destination": {
+                            "fileName": "olist_orders_dataset.csv"
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "olist_sellers_dataset"
+                        },
+                        "destination": {
+                            "fileName": "olist_sellers_dataset.csv"
+                        }
+                    },
+                    {
+                        "source": {
+                            "table": "product_category_name_translation"
+                        },
+                        "destination": {
+                            "fileName": "product_category_name_translation.csv"
+                        }
+                    }
+                ]
+            }
+        },
+        "annotations": [],
+        "lastPublishTime": "2022-01-23T22:19:56Z"
+    },
+    "type": "Microsoft.DataFactory/factories/pipelines"
+}

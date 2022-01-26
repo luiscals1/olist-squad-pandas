@@ -1,0 +1,10 @@
+SEP=,
+NAME,TYPE,LOCATION,
+"olistworkspace","Azure Databricks Service","East US"
+"olistdatafactory","Data factory (V2)","East US 2"
+"olistSqlPool (olistsynapse/olistSqlPool)","Dedicated SQL pool","East US 2"
+"olistvault","Key vault","East US"
+"olistdb (olistdbserver/olistdb)","SQL database","East US"
+"olistdbserver","SQL server","East US"
+"olistdl","Storage account","Brazil South"
+"olistsynapse","Synapse workspace","East US 2"
