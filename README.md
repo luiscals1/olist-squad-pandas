@@ -1,3 +1,4 @@
+<<<<<<< master
 ### Neste projeto é apresentado uma solução completa baseada em dados: Data Engineering, Data Science, Data Analytics, Data Storytelling. Esta solução foi desenvolvida pelo Squad Pandas, da StackLabs. A StackLabs é uma iniciativa da Stack Tecnologias que tem como ideia simular uma empresa real, tornando possível a experiência do mercado de trabalho na área de dados.
 
 ### Membros do Squad Pandas:
@@ -35,3 +36,4 @@
  * 5 [Azure Cloud](https://cutt.ly/dI7yPkI)
 #### Repositório do Projeto
  * 6 [GitHub Portal](https://cutt.ly/mI7zLKQ)
+
